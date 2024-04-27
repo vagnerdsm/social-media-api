@@ -17,9 +17,17 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
+  post  Post[]
 }
 
 model Post {
-  id           Int      @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   title        String
+  mediaUrl     String?
+  scheduleDate DateTime?
+  published    Boolean   @default(false)
+  publishedAt  DateTime?
+  platforms    String?
+  author       User?      @relation(fields: [authorId], references: [id])
+  authorId     Int?
 }
