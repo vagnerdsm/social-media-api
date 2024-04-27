@@ -10,7 +10,11 @@ export class PostService {
   async create(post: CreatePostDto) {
     return await this.prisma.post.create({
       data: {
-        title: post.title
+        title: post.title,
+        mediaUrl: post.mediaUrl,
+        scheduleDate: post.scheduleDate,
+        platforms: post.platforms,
+        authorId: Number(post.authorId),
       },
     })
   }
@@ -29,12 +33,7 @@ export class PostService {
   }
 
   update(id: number, updatePostDto: UpdatePostDto) {
-    return this.prisma.post.update({
-      where: {
-        id: Number(id)
-      },
-      data: updatePostDto
-    })
+    return 'update post dont working...'
   }
 
   async remove(id: number) {
